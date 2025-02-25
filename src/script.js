@@ -5,6 +5,7 @@ import Stats from 'stats.js'
 import gsap from 'gsap'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 const stats = new Stats();
 stats.showPanel(0); // 0: FPS, 1: ms, 2: memory
@@ -31,53 +32,142 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 
+/** 
+ * Models
+ */
+
+let model1 = null
+let model2 = null
+// let model3 = null
+// let model4 = null
+
+const gltfLoader = new GLTFLoader()
+
+gltfLoader.load(
+    // 'models/low-poly-saloon/scene.gltf',
+    // 'models/low-poly-island/scene.gltf',
+    // 'models/building-cell-shaded/scene.gltf',
+    // 'models/tavern/scene.gltf',
+    // 'models/sea-watcher/scene.gltf',
+    'models/bear-of-clouds/scene.gltf',
+
+    (gltf) => {
+        model1 = gltf.scene
+        // island.scale.set(0.2, 0.2, 0.2)
+        // island.scale.set(0.0025, 0.0025, 0.0025)
+        // island.scale.set(0.005, 0.005, 0.005)
+        // model1.scale.set(3, 3, 3)
+        model1.position.set(0, 5.25, -0.25)
+        scene.add(model1)
+    }
+)
+
+gltfLoader.load(
+    'models/dinosaur-bones/scene.gltf',
+
+    (gltf) => {
+        model2 = gltf.scene
+        model2.scale.set(0.015, 0.015, 0.015)
+        model2.position.set(0, -3, 0)
+        model2.rotation.set(0, 4.5, 0)
+        scene.add(model2)
+
+        // Traverse all child meshes and update their material color
+        model2.traverse((child) => {
+            if (child.isMesh) {
+                // If there's an existing texture map you don't want, remove it
+                // child.material.map = null
+
+                // Set a brownish color to match the soil layers (example: SaddleBrown)
+                // child.material.color.set("#BDB76B")
+                child.material.color.set("#D2B48C")
+
+
+                // Optionally adjust metalness/roughness if it's a PBR material
+                // child.material.metalness = 0.0
+                // child.material.roughness = 0.8
+            }
+        })
+    }
+
+)
+
+// gltfLoader.load(
+//     'models/strawberry-cat/scene.gltf',
+
+//     (gltf) => {
+//         model3 = gltf.scene
+//         model3.scale.set(0.7, 0.7, 0.7)
+//         model3.position.set(-2, 5.25, 2)
+//         model3.rotation.set(0, 2, 0)
+//         scene.add(model3)
+//     }
+// )
+
+// gltfLoader.load(
+//     'models/clouds-1/scene.gltf',
+
+//     (gltf) => {
+//         model4 = gltf.scene
+//         // model4.scale.set(0.5, 0.5, 0.5)
+//         model4.position.set(0, 8, -2)
+//         model4.rotation.set(0, 4.5, 0)
+//         scene.add(model4)
+//     }
+// )
+
+
+
+
+
+
 /**
  * Textures
  */
 
 const textureLoader = new THREE.TextureLoader()
 
-const matcapTexture = textureLoader.load('/textures/matcaps/1.png')
+const matcapTexture = textureLoader.load('/textures/matcaps/1.webp')
 matcapTexture.colorSpace = THREE.SRGBColorSpace
 
-const grassColorTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Color.jpg')
-grassColorTexture.colorSpace = THREE.SRGBColorSpace
-const grassNormalTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_NormalGL.jpg')
-const grassDisplacementTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Displacement.jpg')
-const grassRoughnessTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Roughness.jpg')
-const grassAOTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_AmbientOcclusion.jpg')
+// const grassColorTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Color.jpg')
+// grassColorTexture.colorSpace = THREE.SRGBColorSpace
+// const grassNormalTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_NormalGL.jpg')
+// const grassDisplacementTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Displacement.jpg')
+// const grassRoughnessTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Roughness.jpg')
+// const grassAOTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_AmbientOcclusion.jpg')
 
-const humusLayerColorTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_diff_1k.jpg')
+const humusLayerColorTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_diff_1k.webp')
 humusLayerColorTexture.colorSpace = THREE.SRGBColorSpace
-const humusLayerARMTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_arm_1k.jpg')
-const humusLayerNormalTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_nor_gl_1k.jpg')
-const humusLayerDisplacementTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_disp_2k.jpg')
+const humusLayerARMTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_arm_1k.webp')
+const humusLayerNormalTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_nor_gl_1k.webp')
+const humusLayerDisplacementTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_disp_2k.webp')
 
-const topsoilColorTexture = textureLoader.load('./textures/topSoil/gravelly_sand_diff_1k.jpg')
+const topsoilColorTexture = textureLoader.load('./textures/topSoil/gravelly_sand_diff_1k.webp')
 topsoilColorTexture.colorSpace = THREE.SRGBColorSpace
-const topsoilARMTexture = textureLoader.load('./textures/topSoil/gravelly_sand_arm_1k.jpg')
-const topsoilNormalTexture = textureLoader.load('./textures/topSoil/gravelly_sand_nor_gl_1k.jpg')
-const topsoilDisplacementTexture = textureLoader.load('./textures/topSoil/gravelly_sand_disp_1k.jpg')
+const topsoilARMTexture = textureLoader.load('./textures/topSoil/gravelly_sand_arm_1k.webp')
+const topsoilNormalTexture = textureLoader.load('./textures/topSoil/gravelly_sand_nor_gl_1k.webp')
+const topsoilDisplacementTexture = textureLoader.load('./textures/topSoil/gravelly_sand_disp_1k.webp')
 
-const subsoilColorTexture = textureLoader.load('./textures/subSoil/red_mud_stones_diff_1k.jpg')
+const subsoilColorTexture = textureLoader.load('./textures/subSoil/red_mud_stones_diff_1k.webp')
 subsoilColorTexture.colorSpace = THREE.SRGBColorSpace
-const subsoilARMTexture = textureLoader.load('./textures/subSoil/red_mud_stones_arm_1k.jpg')
-const subsoilNormalTexture = textureLoader.load('./textures/subSoil/red_mud_stones_nor_gl_1k.jpg')
-const subsoilDisplacementTexture = textureLoader.load('./textures/subSoil/red_mud_stones_disp_1k.jpg')
+const subsoilARMTexture = textureLoader.load('./textures/subSoil/red_mud_stones_arm_1k.webp')
+const subsoilNormalTexture = textureLoader.load('./textures/subSoil/red_mud_stones_nor_gl_1k.webp')
+const subsoilDisplacementTexture = textureLoader.load('./textures/subSoil/red_mud_stones_disp_1k.webp')
 
-const parentRockColorTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_col_1k.jpg')
+const parentRockColorTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_col_1k.webp')
 parentRockColorTexture.colorSpace = THREE.SRGBColorSpace
-const parentRockARMTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_arm_1k.jpg')
-const parentRockNormalTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_nor_gl_1k.jpg')
-const parentRockDisplacementTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_height_1k.jpg')
-const parentRockAOTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_ao_1k.jpg')
+const parentRockARMTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_arm_1k.webp')
+const parentRockNormalTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_nor_gl_1k.webp')
+const parentRockDisplacementTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_height_1k.webp')
+const parentRockAOTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_ao_1k.webp')
 
-const bedRockColorTexture = textureLoader.load('./textures/bedRock/broken_wall_diff_1k.jpg')
+const bedRockColorTexture = textureLoader.load('./textures/bedRock/broken_wall_diff_1k.webp')
 bedRockColorTexture.colorSpace = THREE.SRGBColorSpace
-const bedRockARMTexture = textureLoader.load('./textures/bedRock/broken_wall_arm_1k.jpg')
-const bedRockNormalTexture = textureLoader.load('./textures/bedRock/broken_wall_nor_gl_1k.jpg')
-const bedRockDisplacementTexture = textureLoader.load('./textures/bedRock/broken_wall_disp_1k.jpg')
-const bedRockAOTexture = textureLoader.load('./textures/bedRock/broken_wall_ao_1k.jpg')
+const bedRockARMTexture = textureLoader.load('./textures/bedRock/broken_wall_arm_1k.webp')
+const bedRockNormalTexture = textureLoader.load('./textures/bedRock/broken_wall_nor_gl_1k.webp')
+const bedRockDisplacementTexture = textureLoader.load('./textures/bedRock/broken_wall_disp_1k.webp')
+const bedRockAOTexture = textureLoader.load('./textures/bedRock/broken_wall_ao_1k.webp')
 
 
 // Repeat wrapping for parent rock textures
@@ -111,7 +201,7 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 2); // Increased from 1 to
 scene.add(ambientLight)
 
 // Add multiple directional lights from different angles
-const frontLight = new THREE.DirectionalLight(0xffffff, 1);
+const frontLight = new THREE.DirectionalLight(0xffffff, 2);
 frontLight.position.set(0, 5, 5);
 scene.add(frontLight);
 
@@ -128,6 +218,8 @@ scene.add(frontLight);
 /**
  * Layers of soil
  */
+
+const layersOfSoil = new THREE.Group()
 
 
 // 3D-Text
@@ -154,7 +246,7 @@ fontLoader.load(
         )
         const textMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture })
         text = new THREE.Mesh(textGeometry, textMaterial)
-        scene.add(text)
+        // scene.add(text)
 
         text.position.x -= 3.5
         text.position.y += 3
@@ -162,26 +254,27 @@ fontLoader.load(
 )
 
 // Grass and tree above the ground
-const grassLayer = new THREE.Mesh(
-    new THREE.PlaneGeometry(3, 3, 64, 64),
-    new THREE.MeshStandardMaterial({
-        // wireframe: true,
-        color: "lightgreen",
-        alphaMap: grassAOTexture,
-        transparent: true,
-        map: grassColorTexture,
-        aoMap: grassAOTexture,
-        roughnessMap: grassRoughnessTexture,
-        normalMap: grassNormalTexture,
-        displacementMap: grassDisplacementTexture,
-        // Check the 2 via lil-gui
-        displacementScale: 0.5,
-        displacementBias: -0.15
-    })
-)
 
-grassLayer.rotation.x = - Math.PI * 0.5
-scene.add(grassLayer)
+// const grassLayer = new THREE.Mesh(
+//     new THREE.PlaneGeometry(3, 3, 64, 64),
+//     new THREE.MeshStandardMaterial({
+//         // wireframe: true,
+//         color: "lightgreen",
+//         alphaMap: grassAOTexture,
+//         transparent: true,
+//         map: grassColorTexture,
+//         aoMap: grassAOTexture,
+//         roughnessMap: grassRoughnessTexture,
+//         normalMap: grassNormalTexture,
+//         displacementMap: grassDisplacementTexture,
+//         // Check the 2 via lil-gui
+//         displacementScale: 0.5,
+//         displacementBias: -0.15
+//     })
+// )
+
+// grassLayer.rotation.x = - Math.PI * 0.5
+// layersOfSoil.add(grassLayer)
 
 // Humus
 // Increase segments, especially on the y-axis
@@ -199,7 +292,7 @@ const humusLayer = new THREE.Mesh(
         displacementBias: -0.07 // Add this to push displacement inward
     })
 )
-scene.add(humusLayer)
+layersOfSoil.add(humusLayer)
 
 // Topsoil
 const topsoil = new THREE.Mesh(
@@ -214,7 +307,7 @@ const topsoil = new THREE.Mesh(
         displacementBias: -0.1 // Add this to push displacement inward
     })
 )
-scene.add(topsoil)
+layersOfSoil.add(topsoil)
 
 // Subsoil
 const subsoil = new THREE.Mesh(
@@ -229,7 +322,7 @@ const subsoil = new THREE.Mesh(
         displacementBias: -0.09
     })
 )
-scene.add(subsoil)
+layersOfSoil.add(subsoil)
 
 // Parent Rock
 const parentRock = new THREE.Mesh(
@@ -246,7 +339,7 @@ const parentRock = new THREE.Mesh(
         displacementBias: -0.08
     })
 )
-scene.add(parentRock)
+layersOfSoil.add(parentRock)
 
 // Bedrock
 const bedRock = new THREE.Mesh(
@@ -263,7 +356,11 @@ const bedRock = new THREE.Mesh(
         displacementBias: -0.45
     })
 )
-scene.add(bedRock)
+layersOfSoil.add(bedRock)
+
+layersOfSoil.scale.set(2.3, 2.3, 2.3)
+scene.add(layersOfSoil)
+
 
 
 debugObject.expandLayers = () => {
@@ -277,9 +374,9 @@ debugObject.expandLayers = () => {
             ease: 'power2.inOut'
         })
 
-        gsap.to(grassLayer.position, {
+        gsap.to(model1.position, {
             duration: 1,
-            y: 5.3,
+            y: 12.15,
             ease: 'power2.inOut'
         })
 
@@ -307,6 +404,12 @@ debugObject.expandLayers = () => {
             ease: 'power2.inOut'
         })
 
+        gsap.to(model2.position, {
+            duration: 3,
+            y: +0.4,
+            ease: 'power2.inOut'
+        })
+
         gsap.to(bedRock.position, {
             duration: 1.7,
             y: -4,
@@ -321,9 +424,9 @@ debugObject.expandLayers = () => {
             ease: 'power2.inOut'
         })
 
-        gsap.to(grassLayer.position, {
+        gsap.to(model1.position, {
             duration: 1.8,
-            y: 2.3,
+            y: 5.3,
             ease: 'power2.inOut'
         })
 
@@ -342,6 +445,12 @@ debugObject.expandLayers = () => {
         gsap.to(subsoil.position, {
             duration: 1.4,
             y: 0,
+            ease: 'power2.inOut'
+        })
+
+        gsap.to(model2.position, {
+            duration: 1,
+            y: -3,
             ease: 'power2.inOut'
         })
 
@@ -366,10 +475,10 @@ debugObject.lightMode = () => {
     isLightMode = !isLightMode;
 
     if (isLightMode) {
-        scene.background = new THREE.Color(0xffffff); // White
+        scene.background = new THREE.Color(0xffdb38);
 
     } else {
-        scene.background = new THREE.Color(0x000000); // Black
+        scene.background = new THREE.Color("brown");
     }
 };
 
@@ -377,7 +486,7 @@ gui.add(debugObject, 'lightMode').name('Light/Dark Mode')
 gui.add(debugObject, 'expandLayers').name('Expand Layers')
 
 // Default positions
-grassLayer.position.y += 2.3
+// grassLayer.position.y += 2.3
 humusLayer.position.y += 2
 topsoil.position.y += 1.25
 subsoil.position.y -= 0
@@ -412,8 +521,8 @@ window.addEventListener('resize', () => {
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.x = 4
-camera.position.y = 3
-camera.position.z = 8
+camera.position.y = 5
+camera.position.z = 20
 scene.add(camera)
 
 // Controls
@@ -425,6 +534,7 @@ controls.enableDamping = true
  */
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
+    alpha: true
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))

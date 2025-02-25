@@ -1,0 +1,445 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 625,
+      "max": [
+        1.2396637201309204,
+        58.63771057128906,
+        41.21400451660156
+      ],
+      "min": [
+        -43.20045471191406,
+        -1.2396646738052368,
+        -1.7867772579193115
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 7500,
+      "componentType": 5126,
+      "count": 625,
+      "max": [
+        0.9999906420707703,
+        0.9999906420707703,
+        1.0
+      ],
+      "min": [
+        -0.9999906420707703,
+        -0.9999906420707703,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 625,
+      "max": [
+        0.8750001192092896,
+        1.0000001192092896
+      ],
+      "min": [
+        0.125,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 3120,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 15000,
+      "componentType": 5126,
+      "count": 3921,
+      "max": [
+        0.424557089805603,
+        0.5112622380256653,
+        0.5978635549545288
+      ],
+      "min": [
+        -1.8244950771331787,
+        -2.794931411743164,
+        -2.7257239818573
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 62052,
+      "componentType": 5126,
+      "count": 3921,
+      "max": [
+        0.9999823570251465,
+        0.9998419284820557,
+        0.9986870288848877
+      ],
+      "min": [
+        -0.999930202960968,
+        -0.9988824725151062,
+        -0.9995250701904297
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 5000,
+      "componentType": 5126,
+      "count": 3921,
+      "max": [
+        0.999764084815979,
+        0.9978460669517517
+      ],
+      "min": [
+        0.00023590833006892353,
+        0.00023593046353198588
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 12480,
+      "componentType": 5125,
+      "count": 20616,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 109104,
+      "componentType": 5126,
+      "count": 3887,
+      "max": [
+        0.4445553421974182,
+        0.5285996198654175,
+        0.6175678968429565
+      ],
+      "min": [
+        -1.8444937467575073,
+        -2.8143515586853027,
+        -2.745603084564209
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 155748,
+      "componentType": 5126,
+      "count": 3887,
+      "max": [
+        0.9999293684959412,
+        0.9986921548843384,
+        0.9994292259216309
+      ],
+      "min": [
+        -0.9999897480010986,
+        -0.9998419284820557,
+        -0.9986947178840637
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 36368,
+      "componentType": 5126,
+      "count": 3887,
+      "max": [
+        0.999764084815979,
+        0.9978460669517517
+      ],
+      "min": [
+        0.00023590833006892353,
+        0.00023593046353198588
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 94944,
+      "componentType": 5125,
+      "count": 20424,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "LiliumLetifer (https://sketchfab.com/LiliumLetifer)",
+      "license": "CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)",
+      "source": "https://sketchfab.com/3d-models/strayberry-cat-2e10989cf9774a7ab26e33abef2ad7d9",
+      "title": "Strayberry Cat"
+    },
+    "generator": "Sketchfab-16.14.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 176640,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 67464,
+      "byteOffset": 176640,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 202392,
+      "byteOffset": 244104,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 446496,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_unlit"
+  ],
+  "images": [
+    {
+      "uri": "textures/Texture_baseColor.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_unlit": {}
+      },
+      "name": "Light",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_unlit": {}
+      },
+      "name": "Texture",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "extensions": {
+        "KHR_materials_unlit": {}
+      },
+      "name": "Outline",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.31398871337571754,
+          0.0021246888848418665,
+          0.0018211619012930256,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Sparks_Light_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Strayberry_Cat_Texture_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Strayberry_Cat_Outline_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.5173413157463074,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.148728480662847e-16,
+        -0.5173413157463074,
+        0.0,
+        0.0,
+        0.5173413157463074,
+        1.148728480662847e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "0916d48fbca24835b38516661a3344e8.fbx"
+    },
+    {
+      "children": [
+        3,
+        5
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        3.3274889060788415,
+        -0.7644749920460502,
+        0.5207774490441454,
+        0.0,
+        0.4277069892546598,
+        -0.45250648279645744,
+        -3.3970751899510643,
+        0.0,
+        0.8201813562315818,
+        3.3374573845111732,
+        -0.34130060101740206,
+        0.0,
+        -87.8674545288086,
+        59.362064361572266,
+        178.6663360595703,
+        1.0
+      ],
+      "name": "Sparks"
+    },
+    {
+      "mesh": 0,
+      "name": "Sparks_Light_0"
+    },
+    {
+      "children": [
+        6,
+        7
+      ],
+      "matrix": [
+        -65.54745060343285,
+        38.721752643839025,
+        26.24927593724628,
+        0.0,
+        -12.330617359285737,
+        -57.88921038490319,
+        54.60459772034879,
+        0.0,
+        45.125988924711365,
+        40.42687718003006,
+        53.04885342264689,
+        0.0,
+        -34.95585632324219,
+        76.2678451538086,
+        128.93341064453125,
+        1.0
+      ],
+      "name": "Strayberry_Cat"
+    },
+    {
+      "mesh": 1,
+      "name": "Strayberry_Cat_Texture_0"
+    },
+    {
+      "mesh": 2,
+      "name": "Strayberry_Cat_Outline_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}

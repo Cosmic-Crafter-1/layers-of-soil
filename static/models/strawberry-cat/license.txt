@@ -1,0 +1,11 @@
+Model Information:
+* title:	Strayberry Cat
+* source:	https://sketchfab.com/3d-models/strayberry-cat-2e10989cf9774a7ab26e33abef2ad7d9
+* author:	LiliumLetifer (https://sketchfab.com/LiliumLetifer)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Strayberry Cat" (https://sketchfab.com/3d-models/strayberry-cat-2e10989cf9774a7ab26e33abef2ad7d9) by LiliumLetifer (https://sketchfab.com/LiliumLetifer) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

@@ -1,0 +1,638 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 1076,
+      "max": [
+        0.498159795999527,
+        0.1633317470550537,
+        0.8590872287750244
+      ],
+      "min": [
+        -0.498159795999527,
+        -1.41104257106781,
+        -0.06616544723510742
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 12912,
+      "componentType": 5126,
+      "count": 1076,
+      "max": [
+        0.9999879002571106,
+        0.9999035000801086,
+        0.9999976754188538
+      ],
+      "min": [
+        -0.9999879002571106,
+        -0.9989792108535767,
+        -0.9999932646751404
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 1076,
+      "max": [
+        0.9727635383605957,
+        0.9727635383605957
+      ],
+      "min": [
+        0.027236491441726685,
+        0.027236491441726685
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 3480,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 25824,
+      "componentType": 5126,
+      "count": 264,
+      "max": [
+        0.3518102169036865,
+        0.013868331909179688,
+        0.045636266469955444
+      ],
+      "min": [
+        -0.3518102169036865,
+        -1.3372366428375244,
+        -0.2768629491329193
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 28992,
+      "componentType": 5126,
+      "count": 264,
+      "max": [
+        0.9929854273796082,
+        0.9927686452865601,
+        0.9997538328170776
+      ],
+      "min": [
+        -0.9929854869842529,
+        -0.9965839982032776,
+        -0.9994929432868958
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 8608,
+      "componentType": 5126,
+      "count": 264,
+      "max": [
+        0.9754698276519775,
+        0.9754698276519775
+      ],
+      "min": [
+        0.024530142545700073,
+        0.024530142545700073
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 13920,
+      "componentType": 5125,
+      "count": 768,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 32160,
+      "componentType": 5126,
+      "count": 3769,
+      "max": [
+        0.30481255054473877,
+        0.17467346787452698,
+        0.41633856296539307
+      ],
+      "min": [
+        -0.30481255054473877,
+        -0.9310779571533203,
+        -0.26490914821624756
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 77388,
+      "componentType": 5126,
+      "count": 3769,
+      "max": [
+        0.9999472498893738,
+        0.999984085559845,
+        0.999941349029541
+      ],
+      "min": [
+        -0.9995633959770203,
+        -0.9999251365661621,
+        -0.9998838901519775
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 10720,
+      "componentType": 5126,
+      "count": 3769,
+      "max": [
+        0.9784113168716431,
+        0.9784113168716431
+      ],
+      "min": [
+        0.021588653326034546,
+        0.021588653326034546
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 16992,
+      "componentType": 5125,
+      "count": 12876,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 122616,
+      "componentType": 5126,
+      "count": 4114,
+      "max": [
+        0.6883805394172668,
+        1.3192722797393799,
+        0.47883474826812744
+      ],
+      "min": [
+        -0.31034553050994873,
+        -0.02361738681793213,
+        -0.4165838956832886
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 171984,
+      "componentType": 5126,
+      "count": 4114,
+      "max": [
+        0.9969404339790344,
+        0.9998192191123962,
+        0.9973574280738831
+      ],
+      "min": [
+        -0.9974961876869202,
+        -0.9990431070327759,
+        -0.9988887906074524
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 40872,
+      "componentType": 5126,
+      "count": 4114,
+      "max": [
+        1.0,
+        1.0
+      ],
+      "min": [
+        0.09090908616781235,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 68496,
+      "componentType": 5125,
+      "count": 13596,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 221352,
+      "componentType": 5126,
+      "count": 9254,
+      "max": [
+        0.41486871242523193,
+        0.10981333255767822,
+        0.5120251178741455
+      ],
+      "min": [
+        -0.1449277102947235,
+        -0.3584996461868286,
+        -0.04849648475646973
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 332400,
+      "componentType": 5126,
+      "count": 9254,
+      "max": [
+        0.9998390078544617,
+        0.9984590411186218,
+        0.9999108910560608
+      ],
+      "min": [
+        -0.9997522830963135,
+        -0.9990782141685486,
+        -0.9996838569641113
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 73784,
+      "componentType": 5126,
+      "count": 9254,
+      "max": [
+        0.7500005960464478,
+        1.0090932846069336
+      ],
+      "min": [
+        -0.0028642190154641867,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 122880,
+      "componentType": 5125,
+      "count": 27984,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Horizon Studio (https://sketchfab.com/myhnea15)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/stylized-dinosaur-bones-c90f0cb4829b414480a6db8ffe257da0",
+      "title": "Stylized Dinosaur Bones"
+    },
+    "generator": "Sketchfab-12.67.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 234816,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 147816,
+      "byteOffset": 234816,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 443448,
+      "byteOffset": 382632,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 826080,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/DinoBone_M_baseColor.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "DinoBone_M",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "DinoSkullTop_DinoBone_M_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "DinoSkullBottom_DinoBone_M_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "DinoRib_DinoBone_M_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "DinoTail_DinoBone_M_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 13,
+            "POSITION": 12,
+            "TEXCOORD_0": 14
+          },
+          "indices": 15,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "DinoNeck_DinoBone_M_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 17,
+            "POSITION": 16,
+            "TEXCOORD_0": 18
+          },
+          "indices": 19,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "StylizedDinosaurBones.fbx"
+    },
+    {
+      "children": [
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        69.46029663085938,
+        -6.305121607598329e-16,
+        -1.289313777436575e-17,
+        0.0,
+        1.2893108846500522e-17,
+        2.839551416616235,
+        -69.40223163414392,
+        0.0,
+        6.305121613513687e-16,
+        69.40223163414392,
+        2.839551416616235,
+        0.0,
+        163.60256958007813,
+        10.088836669921875,
+        0.0,
+        1.0
+      ],
+      "name": "DinoSkullTop"
+    },
+    {
+      "mesh": 0,
+      "name": "DinoSkullTop_DinoBone_M_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        69.46029663085938,
+        -6.305121607598329e-16,
+        -1.289313777436575e-17,
+        0.0,
+        1.2893108846500522e-17,
+        2.839551416616235,
+        -69.40223163414392,
+        0.0,
+        6.305121613513687e-16,
+        69.40223163414392,
+        2.839551416616235,
+        0.0,
+        163.60256958007813,
+        10.088836669921875,
+        0.0,
+        1.0
+      ],
+      "name": "DinoSkullBottom"
+    },
+    {
+      "mesh": 1,
+      "name": "DinoSkullBottom_DinoBone_M_0"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        165.1348876953125,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -2.6903888094614094e-05,
+        -165.1348876953103,
+        0.0,
+        0.0,
+        165.1348876953103,
+        -2.6903888094614094e-05,
+        0.0,
+        62.83283996582031,
+        -1.556229591369629,
+        -89.25968170166016,
+        1.0
+      ],
+      "name": "DinoRib"
+    },
+    {
+      "mesh": 2,
+      "name": "DinoRib_DinoBone_M_0"
+    },
+    {
+      "children": [
+        10
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        -165.415283203125,
+        0.0,
+        94.79120635986328,
+        1.0
+      ],
+      "name": "DinoTail"
+    },
+    {
+      "mesh": 3,
+      "name": "DinoTail_DinoBone_M_0"
+    },
+    {
+      "children": [
+        12
+      ],
+      "matrix": [
+        198.11561584472656,
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        -3.227713570349849e-05,
+        -198.11564636230207,
+        0.0,
+        0.0,
+        198.11564636230207,
+        -3.227713570349849e-05,
+        0.0,
+        -41.665313720703125,
+        10.658329963684082,
+        -1.3843923807144165,
+        1.0
+      ],
+      "name": "DinoNeck"
+    },
+    {
+      "mesh": 4,
+      "name": "DinoNeck_DinoBone_M_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    }
+  ]
+}
