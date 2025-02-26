@@ -89,7 +89,6 @@ gltfLoader.load(
             }
         })
     }
-
 )
 
 // gltfLoader.load(
@@ -363,6 +362,8 @@ scene.add(layersOfSoil)
 
 
 
+
+
 debugObject.expandLayers = () => {
     isExpanded = !isExpanded
 
@@ -557,9 +558,9 @@ const sound = new THREE.Audio(listener)
 const audioLoader = new THREE.AudioLoader()
 
 // Load sound files into the speaker.
-audioLoader.load('./sounds/avala-trail-forest-nature.mp3', function (buffer) {
+audioLoader.load('./sounds/narration.mp3', function (buffer) {
     sound.setBuffer(buffer) // Attach the loaded sound
-    sound.setLoop(true) // Make it loop
+    // sound.setLoop(true) // Make it loop
     sound.setVolume(0.5)
 })
 
@@ -585,7 +586,7 @@ const soundControls = {
 }
 
 // Add buttons to lil-gui
-const soundFolder = gui.addFolder('Sound Controls');
+const soundFolder = gui.addFolder('Narration Controls');
 soundFolder.add(soundControls, 'play').name('▶ Play');
 soundFolder.add(soundControls, 'pause').name('⏸ Pause');
 soundFolder.add(soundControls, 'stop').name('⏹ Stop');
@@ -598,6 +599,132 @@ soundFolder.add(soundControls, 'volume', 0, 1, 0.01).onChange((value) => {
  */
 const clock = new THREE.Clock()
 
+// debugObject.animateCamera = () => {
+
+//     gsap.to(camera.position, {
+//         duration: 1.5,
+//         x: 2,
+//         y: 11,
+//         z: 2,
+//         ease: 'power1.inOut'
+//     })
+// }
+
+debugObject.animateCamera = () => {
+    // Save initial camera position to return to
+    const initialPosition = {
+        x: camera.position.x,
+        y: camera.position.y,
+        z: camera.position.z
+    };
+
+    // First, expand layers if they aren't already
+    if (!isExpanded) {
+        debugObject.expandLayers();
+
+        // Wait for expansion to complete before starting camera animation
+        setTimeout(() => {
+            startCameraJourney();
+        }, 1800); // Match your expansion animation duration
+    } else {
+        // If already expanded, start camera journey immediately
+        startCameraJourney();
+    }
+
+    function startCameraJourney() {
+        // Timeline for sequential animations
+        const timeline = gsap.timeline();
+
+        // Initial overview position - higher as requested
+        timeline.to(camera.position, {
+            duration: 2,
+            x: 6,
+            y: 18, // Higher starting position
+            z: 6,
+            ease: 'power2.inOut',
+            onUpdate: () => controls.update(),
+            onComplete: () => {
+                // Play narration after camera reaches the first position
+                soundControls.play();
+            }
+        });
+
+        // Pause at overview position
+        timeline.to({}, { duration: 2 }); // Back to original pause time
+
+        // Humus layer view
+        timeline.to(camera.position, {
+            duration: 2,
+            x: 6, // Keeping x,z same to avoid moving forward
+            y: 12.5, // Using your suggested values
+            z: 7,
+            ease: 'power2.inOut',
+            onUpdate: () => controls.update()
+        });
+
+        // Pause at humus layer
+        timeline.to({}, { duration: 2 });
+
+        // Subsoil view
+        timeline.to(camera.position, {
+            duration: 2,
+            x: 6,
+            y: 8, // Using your suggested values
+            z: 7,
+            ease: 'power2.inOut',
+            onUpdate: () => controls.update()
+        });
+
+        // Pause at subsoil layer
+        timeline.to({}, { duration: 2 });
+
+        // Parent rock view
+        timeline.to(camera.position, {
+            duration: 2,
+            x: 6,
+            y: 2, // Using your suggested values
+            z: 6,
+            ease: 'power2.inOut',
+            onUpdate: () => controls.update()
+        });
+
+        // Pause at parent rock layer
+        timeline.to({}, { duration: 2 });
+
+        // Bedrock view - going down, not up
+        timeline.to(camera.position, {
+            duration: 2,
+            x: 8,
+            y: -17, // Going down to see bedrock
+            z: 8,
+            ease: 'power2.inOut',
+            onUpdate: () => controls.update()
+        });
+
+        // Pause at bedrock layer
+        timeline.to({}, { duration: 2 });
+
+        // Return to initial position
+        timeline.to(camera.position, {
+            duration: 3,
+            x: initialPosition.x,
+            y: initialPosition.y,
+            z: initialPosition.z,
+            ease: 'power1.out',
+            onUpdate: () => controls.update(),
+            onComplete: () => {
+                // Close expanded layers after animation completes
+                if (isExpanded) {
+                    debugObject.expandLayers();
+                }
+            }
+        });
+    }
+};
+
+gui.add(debugObject, 'animateCamera')
+
+
 const tick = () => {
     stats.begin(); // Start measuring
 
@@ -606,6 +733,15 @@ const tick = () => {
     // Update controls
     controls.update();
 
+    // Rotate the layers and models
+    layersOfSoil.rotation.y -= 0.001
+    if (model1) {
+        model1.rotation.y -= 0.001
+    }
+
+    if (model2) {
+        model2.rotation.y -= 0.001
+    }
     // Render scene
     renderer.render(scene, camera);
 
@@ -616,6 +752,5 @@ const tick = () => {
 };
 
 tick();
-
 
 
