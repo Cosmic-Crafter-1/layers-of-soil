@@ -552,7 +552,7 @@ const sound = new THREE.Audio(listener)
 const audioLoader = new THREE.AudioLoader()
 
 // Load sound files into the speaker.
-audioLoader.load('/sounds/narration.mp3', function (buffer) {
+audioLoader.load('sounds/narration.mp3', function (buffer) {
     sound.setBuffer(buffer) // Attach the loaded sound
     // sound.setLoop(true) // Make it loop
     sound.setVolume(0.5)
