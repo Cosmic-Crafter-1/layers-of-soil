@@ -53,11 +53,7 @@ gltfLoader.load(
 
     (gltf) => {
         model1 = gltf.scene
-        // island.scale.set(0.2, 0.2, 0.2)
-        // island.scale.set(0.0025, 0.0025, 0.0025)
-        // island.scale.set(0.005, 0.005, 0.005)
-        // model1.scale.set(3, 3, 3)
-        model1.position.set(0, 5.25, -0.25)
+        model1.position.set(0, 5.3, -0.21)
         scene.add(model1)
     }
 )
@@ -362,8 +358,6 @@ scene.add(layersOfSoil)
 
 
 
-
-
 debugObject.expandLayers = () => {
     isExpanded = !isExpanded
 
@@ -598,19 +592,18 @@ soundFolder.add(soundControls, 'volume', 0, 1, 0.01).onChange((value) => {
  * Animate
  */
 const clock = new THREE.Clock()
-
-// debugObject.animateCamera = () => {
-
-//     gsap.to(camera.position, {
-//         duration: 1.5,
-//         x: 2,
-//         y: 11,
-//         z: 2,
-//         ease: 'power1.inOut'
-//     })
-// }
+// Counter to handle multiple clicks to animate.
+let counter = 0
 
 debugObject.animateCamera = () => {
+    // Only if value is 1 it'll play, i.e; only 1 animation at a time.
+    counter++
+
+    // Return if spam clicked
+    if (counter != 1) {
+        return
+    }
+
     // Save initial camera position to return to
     const initialPosition = {
         x: camera.position.x,
@@ -714,8 +707,10 @@ debugObject.animateCamera = () => {
             onUpdate: () => controls.update(),
             onComplete: () => {
                 // Close expanded layers after animation completes
+                // And revert back the counter
                 if (isExpanded) {
                     debugObject.expandLayers();
+                    counter = 0
                 }
             }
         });
@@ -735,6 +730,7 @@ const tick = () => {
 
     // Rotate the layers and models
     layersOfSoil.rotation.y -= 0.001
+
     if (model1) {
         model1.rotation.y -= 0.001
     }
@@ -742,6 +738,7 @@ const tick = () => {
     if (model2) {
         model2.rotation.y -= 0.001
     }
+
     // Render scene
     renderer.render(scene, camera);
 
