@@ -6,6 +6,9 @@ import gsap from 'gsap'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import narrationSound from '/sounds/narration.mp3'
+
+
 
 const stats = new Stats();
 stats.showPanel(0); // 0: FPS, 1: ms, 2: memory
@@ -552,7 +555,7 @@ const sound = new THREE.Audio(listener)
 const audioLoader = new THREE.AudioLoader()
 
 // Load sound files into the speaker.
-audioLoader.load('/sounds/narration.mp3', function (buffer) {
+audioLoader.load(narrationSound, function (buffer) {
     sound.setBuffer(buffer) // Attach the loaded sound
     // sound.setLoop(true) // Make it loop
     sound.setVolume(0.5)
