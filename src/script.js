@@ -490,6 +490,17 @@ debugObject.lightMode = () => {
 
 gui.add(debugObject, 'lightMode').name('Light/Dark Mode')
 gui.add(debugObject, 'expandLayers').name('Expand Layers')
+// GUI toggle for Stats
+// First, add a default boolean to the debugObject
+debugObject.showStats = false; // Default to off
+
+// Initially hide the stats panel
+stats.dom.style.display = 'none';
+
+// Add the toggle to the GUI
+gui.add(debugObject, 'showStats').name('Show Stats').onChange((value) => {
+    stats.dom.style.display = value ? 'block' : 'none';
+});
 
 // Default positions
 // grassLayer.position.y += 2.3
@@ -768,7 +779,10 @@ const tick = () => {
     raycaster.setFromCamera(mouse, camera)
 
     const objectsToTest = [humusLayer, subsoil, topsoil, parentRock, bedRock]
+
+    // Get ALL intersections and sort by distance (closest first)
     const intersects = raycaster.intersectObjects(objectsToTest)
+        .sort((a, b) => a.distance - b.distance);
 
     // Bring it back to default on each frame.
     for (const object of objectsToTest) {
@@ -779,18 +793,18 @@ const tick = () => {
         }
     }
 
-    // Scale it when hovered.
-    for (const intersect of intersects) {
-        // console.log(intersect.object.name)
-        if (intersects.length > 0) {
-            const closestObject = intersects[0].object;
-            // console.log(closestObject.name);
-            closestObject.scale.set(1.1, 1.1, 1.1);
+    // Only process if we have intersections
+    if (intersects.length > 0) {
+        // Get only the closest object (first intersection)
+        const closestObject = intersects[0].object;
 
-            const infoBox = document.getElementById(`${intersect.object.name}-info`)
-            if (infoBox) {
-                infoBox.classList.add('visible')
-            }
+        // Scale only the closest object
+        closestObject.scale.set(1.1, 1.1, 1.1);
+
+        // Show info only for the closest object
+        const infoBox = document.getElementById(`${closestObject.name}-info`)
+        if (infoBox) {
+            infoBox.classList.add('visible')
         }
     }
 

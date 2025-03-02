@@ -29,3 +29,9 @@ Added camera animation and narration.
         b. Imprecise ray intersection test: The raycaster is detecting multiple intersections along the ray path, not just the closest one.
         c. BoxGeometry boundaries: The way you're testing for intersections doesn't account for the visual displacement of the geometry.
 
+My original code had two major issues:
+
+You were actually showing info boxes for all intersected objects, not just the top one
+There was a logical inconsistency - you were scaling closestObject (the first intersection) but showing info for intersect.object (the current intersection in the loop)
+
+Solution was to just remove the for loop that looped over all intersections lmao :)
