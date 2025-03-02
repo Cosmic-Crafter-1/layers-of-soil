@@ -9,6 +9,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import narrationSound from '/sounds/narration.mp3'
 
 const html = document.querySelector('html')
+const infoBox = document.querySelectorAll('.info-box')
 
 const stats = new Stats();
 stats.showPanel(0); // 0: FPS, 1: ms, 2: memory
@@ -773,6 +774,11 @@ gui.add(debugObject, 'animateCamera')
 
 const tick = () => {
     stats.begin(); // Start measuring
+
+    // Info box is always at 80% zoom level
+    for (let box of infoBox) {
+        box.style.zoom = "80%";
+    }
 
     const elapsedTime = clock.getElapsedTime();
 
