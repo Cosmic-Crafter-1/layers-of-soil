@@ -1,12 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 html,
 body {
     overflow: hidden;
-    background-color: brown;
+    /* background: linear-gradient(135deg, #592c1c 0%, #8b4513 100%); */
+    background: linear-gradient(135deg, #e8e4ff 0%, #c3baff 100%);
 }
 
 .webgl {
@@ -19,4 +15,290 @@ body {
 h1 {
     text-align: left;
     margin-top: 10em;
+}
+
+.light-mode {
+    background: linear-gradient(135deg, #e8e4ff 0%, #c3baff 100%);
+}
+
+.dark-mode {
+    /* background: linear-gradient(135deg, #121212 0%, #252525 100%); */
+    background: linear-gradient(135deg, #090909 0%, #1c1c1e 100%);
+
+}
+
+
+/* Enhanced Info Box Styling */
+.info-box {
+    position: absolute;
+    background: linear-gradient(145deg, #f9f1e4, #efe5d3);
+    color: #4a3e2c;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(114, 83, 52, 0.1);
+    max-width: 380px;
+    max-height: 700px;
+    height: 650px;
+    top: 50px;
+    left: 20px;
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    overflow-y: auto;
+    z-index: 1000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: none;
+    border-left: 5px solid #8a6d3b;
+}
+
+.info-box.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    display: block;
+    animation: appear 0.5s forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.info-box h2 {
+    margin-top: 0;
+    color: #5e4624;
+    border-bottom: 2px solid #b09064;
+    padding-bottom: 12px;
+    font-size: 1.6em;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-box h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #b09064, #e5c187, #b09064);
+    animation: border-flow 3s infinite linear;
+}
+
+@keyframes border-flow {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.layer-img {
+    width: 280px;
+    height: 280px;
+    margin: 1.5em auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.layer-img:hover {
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.info-box h3 {
+    color: #654a25;
+    margin: 18px 0 10px;
+    font-size: 1.3em;
+    position: relative;
+    display: inline-block;
+}
+
+.info-box h3::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #b09064;
+    transition: width 0.3s ease;
+}
+
+.info-box:hover h3::before {
+    width: 100%;
+}
+
+.info-box p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 1.05em;
+}
+
+.info-box ul {
+    margin: 15px 0 15px 5px;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.info-box li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.5;
+    transition: transform 0.2s ease;
+}
+
+.info-box li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #8a6d3b;
+    font-size: 1.5em;
+    top: -3px;
+}
+
+.info-box li:hover {
+    transform: translateX(5px);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .info-box {
+        background: linear-gradient(145deg, #3a2e1c, #2a2216);
+        color: #e8d9c2;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 220, 175, 0.1);
+        border-left: 5px solid #c4a66c;
+    }
+
+    .info-box h2 {
+        color: #e8d4b8;
+        border-bottom-color: #c4a66c;
+    }
+
+    .info-box h2::after {
+        background: linear-gradient(90deg, #c4a66c, #f0d499, #c4a66c);
+    }
+
+    .info-box h3 {
+        color: #d9c4a2;
+    }
+
+    .info-box h3::before {
+        background-color: #c4a66c;
+    }
+
+    .info-box li::before {
+        color: #c4a66c;
+    }
+
+    .layer-img {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .layer-img:hover {
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* Additional animation for content */
+.info-box.visible h2,
+.info-box.visible h3,
+.info-box.visible p,
+.info-box.visible ul,
+.info-box.visible .layer-img {
+    animation: fade-in 0.5s forwards;
+    opacity: 0;
+}
+
+.info-box.visible h2 {
+    animation-delay: 0.1s;
+}
+
+.info-box.visible h3 {
+    animation-delay: 0.2s;
+}
+
+.info-box.visible p {
+    animation-delay: 0.3s;
+}
+
+.info-box.visible ul {
+    animation-delay: 0.4s;
+}
+
+.info-box.visible .layer-img {
+    animation-delay: 0.3s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom scrollbar for the info box */
+.info-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.info-box::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.info-box::-webkit-scrollbar-thumb {
+    background: rgba(139, 109, 59, 0.5);
+    border-radius: 10px;
+}
+
+.info-box::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 109, 59, 0.7);
+}
+
+/* Optional button styling for interactive elements */
+.info-box .learn-more-btn {
+    background: linear-gradient(to right, #8a6d3b, #b09064);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.info-box .learn-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, #9b7d4b, #c1a174);
+}
+
+@media (prefers-color-scheme: dark) {
+    .info-box .learn-more-btn {
+        background: linear-gradient(to right, #c4a66c, #d9b980);
+        color: #2a2216;
+    }
+
+    .info-box .learn-more-btn:hover {
+        background: linear-gradient(to right, #d5b77d, #e9c990);
+    }
 }

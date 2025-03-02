@@ -20,4 +20,12 @@ Added camera animation and narration.
 -- Noticed that if I click on the animateCamera button twice, the animation plays out twice. [Fixed using a counter].
 
 28/02/12 - 
--- Noticed code is getting too big. Time to organize.
+-- Noticed code is getting too big. Time to organize.'
+-- Sound wasn't working in vercel. Fixed it by importing it rather than trying all paths.
+
+2/03/12 -
+-- Noticed that raycasting was highlighting several layers at once. Because of these reasons :
+        a. Overlapping geometries: The expanded displacement maps on your geometries might be causing the actual rendered surfaces to overlap. Since you're using displacement maps with significant values, the actual visible geometry extends beyond the base shape.
+        b. Imprecise ray intersection test: The raycaster is detecting multiple intersections along the ray path, not just the closest one.
+        c. BoxGeometry boundaries: The way you're testing for intersections doesn't account for the visual displacement of the geometry.
+

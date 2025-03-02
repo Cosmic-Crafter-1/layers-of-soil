@@ -8,7 +8,7 @@ import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import narrationSound from '/sounds/narration.mp3'
 
-
+const html = document.querySelector('html')
 
 const stats = new Stats();
 stats.showPanel(0); // 0: FPS, 1: ms, 2: memory
@@ -21,7 +21,7 @@ document.body.appendChild(stats.dom);
 
 // Flag to Expand/contract layers
 let isExpanded = false
-let isLightMode = false
+let isLightMode = true
 
 // Debug
 const gui = new GUI()
@@ -341,7 +341,7 @@ layersOfSoil.add(parentRock)
 
 // Bedrock
 const bedRock = new THREE.Mesh(
-    new THREE.BoxGeometry(3, 2.5, 3, 64, 64, 64),
+    new THREE.BoxGeometry(3, 2.4, 3, 64, 64, 64),
     new THREE.MeshStandardMaterial({
         transparent: true,
         map: bedRockColorTexture,
@@ -355,6 +355,12 @@ const bedRock = new THREE.Mesh(
     })
 )
 layersOfSoil.add(bedRock)
+
+humusLayer.name = "humusLayer"
+topsoil.name = "topsoil"
+subsoil.name = "subsoil"
+parentRock.name = "parentRock"
+bedRock.name = "bedRock"
 
 layersOfSoil.scale.set(2.3, 2.3, 2.3)
 scene.add(layersOfSoil)
@@ -473,12 +479,14 @@ debugObject.lightMode = () => {
     isLightMode = !isLightMode;
 
     if (isLightMode) {
-        scene.background = new THREE.Color(0xffdb38);
-
+        html.classList.add('light-mode');
+        html.classList.remove('dark-mode');
     } else {
-        scene.background = new THREE.Color("brown");
+        html.classList.add('dark-mode');
+        html.classList.remove('light-mode');
     }
 };
+
 
 gui.add(debugObject, 'lightMode').name('Light/Dark Mode')
 gui.add(debugObject, 'expandLayers').name('Expand Layers')
@@ -490,6 +498,32 @@ topsoil.position.y += 1.25
 subsoil.position.y -= 0
 parentRock.position.y -= 1.5
 bedRock.position.y -= 3.5
+
+
+/**
+ * Raycaster 
+ */
+
+layersOfSoil.updateMatrixWorld()
+
+const raycaster = new THREE.Raycaster()
+
+/**
+ * Mouse
+ */
+
+const mouse = new THREE.Vector2()
+
+window.addEventListener('mousemove', (event) => {
+    mouse.x = event.clientX / sizes.width * 2 - 1
+    mouse.y = -(event.clientY / sizes.height * 2 - 1)
+})
+
+window.addEventListener('click', () => {
+    // 
+})
+
+
 
 /**
  * Sizes
@@ -597,6 +631,9 @@ soundFolder.add(soundControls, 'volume', 0, 1, 0.01).onChange((value) => {
 const clock = new THREE.Clock()
 // Counter to handle multiple clicks to animate.
 let counter = 0
+
+// For mouse enter and mouse leave events
+let currentIntersect = null
 
 debugObject.animateCamera = () => {
     // Only if value is 1 it'll play, i.e; only 1 animation at a time.
@@ -727,6 +764,35 @@ const tick = () => {
     stats.begin(); // Start measuring
 
     const elapsedTime = clock.getElapsedTime();
+
+    raycaster.setFromCamera(mouse, camera)
+
+    const objectsToTest = [humusLayer, subsoil, topsoil, parentRock, bedRock]
+    const intersects = raycaster.intersectObjects(objectsToTest)
+
+    // Bring it back to default on each frame.
+    for (const object of objectsToTest) {
+        object.scale.set(1, 1, 1)
+        const infoBox = document.getElementById(`${object.name}-info`)
+        if (infoBox) {
+            infoBox.classList.remove('visible')
+        }
+    }
+
+    // Scale it when hovered.
+    for (const intersect of intersects) {
+        // console.log(intersect.object.name)
+        if (intersects.length > 0) {
+            const closestObject = intersects[0].object;
+            // console.log(closestObject.name);
+            closestObject.scale.set(1.1, 1.1, 1.1);
+
+            const infoBox = document.getElementById(`${intersect.object.name}-info`)
+            if (infoBox) {
+                infoBox.classList.add('visible')
+            }
+        }
+    }
 
     // Update controls
     controls.update();
