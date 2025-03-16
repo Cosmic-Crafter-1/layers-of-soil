@@ -47,20 +47,20 @@ let model2 = null
 
 const gltfLoader = new GLTFLoader()
 
-gltfLoader.load(
-    // 'models/low-poly-saloon/scene.gltf',
-    // 'models/low-poly-island/scene.gltf',
-    // 'models/building-cell-shaded/scene.gltf',
-    // 'models/tavern/scene.gltf',
-    // 'models/sea-watcher/scene.gltf',
-    'models/bear-of-clouds/scene.gltf',
+// gltfLoader.load(
+//     // 'models/low-poly-saloon/scene.gltf',
+//     // 'models/low-poly-island/scene.gltf',
+//     // 'models/building-cell-shaded/scene.gltf',
+//     // 'models/tavern/scene.gltf',
+//     // 'models/sea-watcher/scene.gltf',
+//     'models/bear-of-clouds/scene.gltf',
 
-    (gltf) => {
-        model1 = gltf.scene
-        model1.position.set(0, 5.3, -0.21)
-        scene.add(model1)
-    }
-)
+//     (gltf) => {
+//         model1 = gltf.scene
+//         model1.position.set(0, 5.3, -0.21)
+//         scene.add(model1)
+//     }
+// )
 
 gltfLoader.load(
     'models/dinosaur-bones/scene.gltf',
@@ -91,35 +91,6 @@ gltfLoader.load(
     }
 )
 
-// gltfLoader.load(
-//     'models/strawberry-cat/scene.gltf',
-
-//     (gltf) => {
-//         model3 = gltf.scene
-//         model3.scale.set(0.7, 0.7, 0.7)
-//         model3.position.set(-2, 5.25, 2)
-//         model3.rotation.set(0, 2, 0)
-//         scene.add(model3)
-//     }
-// )
-
-// gltfLoader.load(
-//     'models/clouds-1/scene.gltf',
-
-//     (gltf) => {
-//         model4 = gltf.scene
-//         // model4.scale.set(0.5, 0.5, 0.5)
-//         model4.position.set(0, 8, -2)
-//         model4.rotation.set(0, 4.5, 0)
-//         scene.add(model4)
-//     }
-// )
-
-
-
-
-
-
 /**
  * Textures
  */
@@ -129,12 +100,12 @@ const textureLoader = new THREE.TextureLoader()
 const matcapTexture = textureLoader.load('/textures/matcaps/1.webp')
 matcapTexture.colorSpace = THREE.SRGBColorSpace
 
-// const grassColorTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Color.jpg')
-// grassColorTexture.colorSpace = THREE.SRGBColorSpace
-// const grassNormalTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_NormalGL.jpg')
-// const grassDisplacementTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Displacement.jpg')
-// const grassRoughnessTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Roughness.jpg')
-// const grassAOTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_AmbientOcclusion.jpg')
+const grassColorTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Color.jpg')
+grassColorTexture.colorSpace = THREE.SRGBColorSpace
+const grassNormalTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_NormalGL.jpg')
+const grassDisplacementTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Displacement.jpg')
+const grassRoughnessTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Roughness.jpg')
+const grassAOTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_AmbientOcclusion.jpg')
 
 const humusLayerColorTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_diff_1k.webp')
 humusLayerColorTexture.colorSpace = THREE.SRGBColorSpace
@@ -204,16 +175,6 @@ const frontLight = new THREE.DirectionalLight(0xffffff, 2);
 frontLight.position.set(0, 5, 5);
 scene.add(frontLight);
 
-// const backLight = new THREE.DirectionalLight(0xffffff, 0.8);
-// backLight.position.set(0, 5, -5);
-// scene.add(backLight);
-
-// const sideLight = new THREE.DirectionalLight(0xffffff, 0.8);
-// sideLight.position.set(5, 5, 0);
-// scene.add(sideLight);
-
-
-
 /**
  * Layers of soil
  */
@@ -254,26 +215,26 @@ fontLoader.load(
 
 // Grass and tree above the ground
 
-// const grassLayer = new THREE.Mesh(
-//     new THREE.PlaneGeometry(3, 3, 64, 64),
-//     new THREE.MeshStandardMaterial({
-//         // wireframe: true,
-//         color: "lightgreen",
-//         alphaMap: grassAOTexture,
-//         transparent: true,
-//         map: grassColorTexture,
-//         aoMap: grassAOTexture,
-//         roughnessMap: grassRoughnessTexture,
-//         normalMap: grassNormalTexture,
-//         displacementMap: grassDisplacementTexture,
-//         // Check the 2 via lil-gui
-//         displacementScale: 0.5,
-//         displacementBias: -0.15
-//     })
-// )
+const grassLayer = new THREE.Mesh(
+    new THREE.PlaneGeometry(3, 3, 64, 64),
+    new THREE.MeshStandardMaterial({
+        // wireframe: true,
+        color: "lightgreen",
+        alphaMap: grassAOTexture,
+        transparent: true,
+        map: grassColorTexture,
+        aoMap: grassAOTexture,
+        roughnessMap: grassRoughnessTexture,
+        normalMap: grassNormalTexture,
+        displacementMap: grassDisplacementTexture,
+        // Check the 2 via lil-gui
+        displacementScale: 0.5,
+        displacementBias: -0.15
+    })
+)
 
-// grassLayer.rotation.x = - Math.PI * 0.5
-// layersOfSoil.add(grassLayer)
+grassLayer.rotation.x = - Math.PI * 0.5
+layersOfSoil.add(grassLayer)
 
 // Humus
 // Increase segments, especially on the y-axis
@@ -379,9 +340,10 @@ debugObject.expandLayers = () => {
             ease: 'power2.inOut'
         })
 
-        gsap.to(model1.position, {
+        gsap.to(grassLayer.position, {
             duration: 1,
-            y: 12.15,
+            // y: 12.15,
+            y: 5.3,
             ease: 'power2.inOut'
         })
 
@@ -429,9 +391,9 @@ debugObject.expandLayers = () => {
             ease: 'power2.inOut'
         })
 
-        gsap.to(model1.position, {
+        gsap.to(grassLayer.position, {
             duration: 1.8,
-            y: 5.3,
+            y: 2.3,
             ease: 'power2.inOut'
         })
 
@@ -504,7 +466,7 @@ gui.add(debugObject, 'showStats').name('Show Stats').onChange((value) => {
 });
 
 // Default positions
-// grassLayer.position.y += 2.3
+grassLayer.position.y += 2.3
 humusLayer.position.y += 2
 topsoil.position.y += 1.25
 subsoil.position.y -= 0
@@ -532,8 +494,31 @@ window.addEventListener('mousemove', (event) => {
 })
 
 window.addEventListener('click', () => {
-    // 
-})
+    // Get all visible info boxes
+    const visibleInfoBoxes = document.querySelectorAll('.info-box.visible');
+
+    if (currentIntersect) {
+        // Get the info box for the currently intersected object
+        const clickedInfoBox = document.getElementById(`${currentIntersect.object.name}-info`);
+
+        // Hide all other visible info boxes first
+        visibleInfoBoxes.forEach(box => {
+            if (box.id !== `${currentIntersect.object.name}-info`) {
+                box.classList.remove('visible');
+            }
+        });
+
+        // Toggle visibility of the clicked info box
+        if (clickedInfoBox) {
+            clickedInfoBox.classList.toggle('visible');
+        }
+    } else {
+        // If clicked outside any layer, hide all visible info boxes
+        visibleInfoBoxes.forEach(box => {
+            box.classList.remove('visible');
+        });
+    }
+});
 
 
 
@@ -793,25 +778,25 @@ const tick = () => {
     // Bring it back to default on each frame.
     for (const object of objectsToTest) {
         object.scale.set(1, 1, 1)
-        const infoBox = document.getElementById(`${object.name}-info`)
-        if (infoBox) {
-            infoBox.classList.remove('visible')
-        }
     }
 
     // Only process if we have intersections
     if (intersects.length > 0) {
+
+        currentIntersect = intersects[0];
         // Get only the closest object (first intersection)
         const closestObject = intersects[0].object;
 
         // Scale only the closest object
         closestObject.scale.set(1.1, 1.1, 1.1);
 
-        // Show info only for the closest object
-        const infoBox = document.getElementById(`${closestObject.name}-info`)
-        if (infoBox) {
-            infoBox.classList.add('visible')
-        }
+        // // Show info only for the closest object
+        // const infoBox = document.getElementById(`${closestObject.name}-info`)
+        // if (infoBox) {
+        //     infoBox.classList.add('visible')
+        // }
+    } else {
+        currentIntersect = null
     }
 
     // Update controls

@@ -35,3 +35,5 @@ You were actually showing info boxes for all intersected objects, not just the t
 There was a logical inconsistency - you were scaling closestObject (the first intersection) but showing info for intersect.object (the current intersection in the loop)
 
 Solution was to just remove the for loop that looped over all intersections lmao :)
+
+-- I gotta notify user to switch of reading mode for better experience.
