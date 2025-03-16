@@ -7,6 +7,9 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import narrationSound from '/sounds/narration.mp3'
+import whoosh from '/sounds/sfx/whoosh.mp3'
+import { animateHumusLayer, animateTopsoilLayer, animateSubsoilLayer, animateParentRockLayer, animateBedRockLayer } from './layersAnimation.js'
+
 
 const html = document.querySelector('html')
 const infoBox = document.querySelectorAll('.info-box')
@@ -23,6 +26,8 @@ document.body.appendChild(stats.dom);
 // Flag to Expand/contract layers
 let isExpanded = false
 let isLightMode = true
+// Flag to track if a layer is currently zoomed in
+let isLayerZoomed = false
 
 // Debug
 const gui = new GUI()
@@ -494,12 +499,36 @@ window.addEventListener('mousemove', (event) => {
 })
 
 window.addEventListener('click', () => {
+    // Only handle clicks when not in zoomed state
+    if (isLayerZoomed) return;
+
     // Get all visible info boxes
     const visibleInfoBoxes = document.querySelectorAll('.info-box.visible');
 
     if (currentIntersect) {
+        console.log(currentIntersect.object.name)
+
+        // Play whoosh sound before animation starts
+        playWhooshSound();
+
         // Get the info box for the currently intersected object
         const clickedInfoBox = document.getElementById(`${currentIntersect.object.name}-info`);
+
+        // Set the zoomed state flag
+        isLayerZoomed = true;
+
+        // Call the appropriate animation function based on the layer name
+        if (currentIntersect.object.name === 'humusLayer') {
+            animateHumusLayer(humusLayer, grassLayer, topsoil, subsoil, parentRock, bedRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; });
+        } else if (currentIntersect.object.name === 'topsoil') {
+            animateTopsoilLayer(topsoil, grassLayer, humusLayer, subsoil, parentRock, bedRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; });
+        } else if (currentIntersect.object.name === 'subsoil') {
+            animateSubsoilLayer(subsoil, grassLayer, humusLayer, topsoil, parentRock, bedRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; });
+        } else if (currentIntersect.object.name === 'parentRock') {
+            animateParentRockLayer(parentRock, grassLayer, humusLayer, topsoil, subsoil, bedRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; });
+        } else if (currentIntersect.object.name === 'bedRock') {
+            animateBedRockLayer(bedRock, grassLayer, humusLayer, topsoil, subsoil, parentRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; });
+        }
 
         // Hide all other visible info boxes first
         visibleInfoBoxes.forEach(box => {
@@ -520,7 +549,52 @@ window.addEventListener('click', () => {
     }
 });
 
+// Create a back button for returning from layer view
+const createBackButton = () => {
+    // Check if button already exists
+    if (document.getElementById('back-button')) return;
 
+    const backButton = document.createElement('button');
+    backButton.id = 'back-button';
+    backButton.innerHTML = 'Go Back';
+    backButton.style.position = 'fixed';
+    backButton.style.bottom = '20px'; // Changed from top to bottom
+    backButton.style.right = '20px';
+    backButton.style.padding = '12px 20px'; // Made bigger
+    backButton.style.backgroundColor = 'white'; // Changed to white
+    backButton.style.color = 'black';
+    backButton.style.border = '5px solid black'; // Thicker border
+    backButton.style.borderRadius = '5px';
+    backButton.style.cursor = 'pointer';
+    backButton.style.fontWeight = 'bold';
+    backButton.style.fontSize = '16px'; // Larger font
+    backButton.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
+    backButton.style.display = 'none';
+    backButton.style.zIndex = '1000';
+
+    backButton.addEventListener('mouseover', () => {
+        backButton.style.backgroundColor = '#f0f0f0';
+    });
+
+    backButton.addEventListener('mouseout', () => {
+        backButton.style.backgroundColor = 'white';
+    });
+
+    document.body.appendChild(backButton);
+};
+
+// Call this function to create the back button
+createBackButton();
+
+// Add ESC key listener for returning from layer view
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        const backButton = document.getElementById('back-button');
+        if (backButton && backButton.style.display === 'block') {
+            backButton.click();
+        }
+    }
+});
 
 /**
  * Sizes
@@ -592,6 +666,11 @@ audioLoader.load(narrationSound, function (buffer) {
     sound.setVolume(0.5)
 })
 
+const whooshSound = new Audio(whoosh)
+
+function playWhooshSound() {
+    whooshSound.play()
+}
 
 // Create an object to store sound controls
 const soundControls = {
@@ -625,6 +704,26 @@ soundFolder.add(soundControls, 'volume', 0, 1, 0.01).onChange((value) => {
 /**
  * Animate
  */
+
+function animateLayer(layerName) {
+    if (layerName === 'humusLayer') {
+        console.log("Hello humus")
+        animateHumusLayer(humusLayer, grassLayer, topsoil, subsoil, parentRock, bedRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; })
+    } else if (layerName === 'topsoil') {
+        console.log("Hello topsoil")
+        animateTopsoilLayer(topsoil, grassLayer, humusLayer, subsoil, parentRock, bedRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; })
+    } else if (layerName === 'subsoil') {
+        console.log("Hello subsoil")
+        animateSubsoilLayer(subsoil, grassLayer, humusLayer, topsoil, parentRock, bedRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; })
+    } else if (layerName === 'parentRock') {
+        console.log("Hello parent rock")
+        animateParentRockLayer(parentRock, grassLayer, humusLayer, topsoil, subsoil, bedRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; })
+    } else if (layerName === 'bedRock') {
+        console.log("Hello bedrock")
+        animateBedRockLayer(bedRock, grassLayer, humusLayer, topsoil, subsoil, parentRock, model2, camera, controls, isExpanded, playWhooshSound, () => { isLayerZoomed = false; })
+    }
+}
+
 const clock = new THREE.Clock()
 // Counter to handle multiple clicks to animate.
 let counter = 0
@@ -662,12 +761,15 @@ debugObject.animateCamera = () => {
     }
 
     function startCameraJourney() {
+        // Play whoosh sound before starting camera movement
+        playWhooshSound();
+
         // Timeline for sequential animations
         const timeline = gsap.timeline();
 
         // Initial overview position - higher as requested
         timeline.to(camera.position, {
-            duration: 2,
+            duration: 1.7,
             x: 6,
             y: 18, // Higher starting position
             z: 6,
@@ -734,6 +836,9 @@ debugObject.animateCamera = () => {
         // Pause at bedrock layer
         timeline.to({}, { duration: 2 });
 
+        // Play whoosh sound before returning
+        playWhooshSound();
+
         // Return to initial position
         timeline.to(camera.position, {
             duration: 3,
@@ -775,28 +880,24 @@ const tick = () => {
     const intersects = raycaster.intersectObjects(objectsToTest)
         .sort((a, b) => a.distance - b.distance);
 
-    // Bring it back to default on each frame.
-    for (const object of objectsToTest) {
-        object.scale.set(1, 1, 1)
-    }
+    // Only scale objects when not in zoomed state
+    if (!isLayerZoomed) {
+        // Bring it back to default on each frame.
+        for (const object of objectsToTest) {
+            object.scale.set(1, 1, 1)
+        }
 
-    // Only process if we have intersections
-    if (intersects.length > 0) {
+        // Only process if we have intersections and not in zoomed state
+        if (intersects.length > 0) {
+            currentIntersect = intersects[0];
+            // Get only the closest object (first intersection)
+            const closestObject = intersects[0].object;
 
-        currentIntersect = intersects[0];
-        // Get only the closest object (first intersection)
-        const closestObject = intersects[0].object;
-
-        // Scale only the closest object
-        closestObject.scale.set(1.1, 1.1, 1.1);
-
-        // // Show info only for the closest object
-        // const infoBox = document.getElementById(`${closestObject.name}-info`)
-        // if (infoBox) {
-        //     infoBox.classList.add('visible')
-        // }
-    } else {
-        currentIntersect = null
+            // Scale only the closest object
+            closestObject.scale.set(1.1, 1.1, 1.1);
+        } else {
+            currentIntersect = null
+        }
     }
 
     // Update controls
@@ -823,5 +924,3 @@ const tick = () => {
 };
 
 tick();
-
-
