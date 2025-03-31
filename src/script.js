@@ -112,59 +112,93 @@ const grassDisplacementTexture = textureLoader.load('./textures/grass/Grass006_1
 const grassRoughnessTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_Roughness.jpg')
 const grassAOTexture = textureLoader.load('./textures/grass/Grass006_1K-JPG_AmbientOcclusion.jpg')
 
-const humusLayerColorTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_diff_1k.webp')
+// const humusLayerColorTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_diff_1k.webp')
+// humusLayerColorTexture.colorSpace = THREE.SRGBColorSpace
+// const humusLayerARMTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_arm_1k.webp')
+// const humusLayerNormalTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_nor_gl_1k.webp')
+// const humusLayerDisplacementTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_disp_2k.webp')
+
+const humusLayerColorTexture = textureLoader.load('./textures/humusLayer/color.jpg')
 humusLayerColorTexture.colorSpace = THREE.SRGBColorSpace
-const humusLayerARMTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_arm_1k.webp')
-const humusLayerNormalTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_nor_gl_1k.webp')
-const humusLayerDisplacementTexture = textureLoader.load('./textures/humusLayer/trident_maple_bark_disp_2k.webp')
+const humusLayerARMTexture = textureLoader.load('./textures/humusLayer/ao_map.png')
+const humusLayerNormalTexture = textureLoader.load('./textures/humusLayer/normal_map.png')
+const humusLayerDisplacementTexture = textureLoader.load('./textures/humusLayer/displacement_map.png')
 
-const topsoilColorTexture = textureLoader.load('./textures/topSoil/gravelly_sand_diff_1k.webp')
+
+
+
+
+const topsoilColorTexture = textureLoader.load('./textures/topSoil/color.jpg')
 topsoilColorTexture.colorSpace = THREE.SRGBColorSpace
-const topsoilARMTexture = textureLoader.load('./textures/topSoil/gravelly_sand_arm_1k.webp')
-const topsoilNormalTexture = textureLoader.load('./textures/topSoil/gravelly_sand_nor_gl_1k.webp')
-const topsoilDisplacementTexture = textureLoader.load('./textures/topSoil/gravelly_sand_disp_1k.webp')
+const topsoilARMTexture = textureLoader.load('./textures/topSoil/roughness_map.jpg')
+const topsoilNormalTexture = textureLoader.load('./textures/topSoil/normal_map.jpg')
+const topsoilDisplacementTexture = textureLoader.load('./textures/topSoil/height_map.jpg')
+const topsoilAOTexture = textureLoader.load('./textures/topSoil/ao_map.jpg')
 
-const subsoilColorTexture = textureLoader.load('./textures/subSoil/red_mud_stones_diff_1k.webp')
+
+
+
+// const subsoilColorTexture = textureLoader.load('./textures/subSoil/red_mud_stones_diff_1k.webp')
+// subsoilColorTexture.colorSpace = THREE.SRGBColorSpace
+// const subsoilARMTexture = textureLoader.load('./textures/subSoil/red_mud_stones_arm_1k.webp')
+// const subsoilNormalTexture = textureLoader.load('./textures/subSoil/red_mud_stones_nor_gl_1k.webp')
+// const subsoilDisplacementTexture = textureLoader.load('./textures/subSoil/red_mud_stones_disp_1k.webp')
+
+const subsoilColorTexture = textureLoader.load('./textures/subSoil/subsoil.jpg')
 subsoilColorTexture.colorSpace = THREE.SRGBColorSpace
-const subsoilARMTexture = textureLoader.load('./textures/subSoil/red_mud_stones_arm_1k.webp')
-const subsoilNormalTexture = textureLoader.load('./textures/subSoil/red_mud_stones_nor_gl_1k.webp')
-const subsoilDisplacementTexture = textureLoader.load('./textures/subSoil/red_mud_stones_disp_1k.webp')
+const subsoilNormalTexture = textureLoader.load('./textures/subSoil/normal_map_subsoil.png')
+const subsoilDisplacementTexture = textureLoader.load('./textures/subSoil/displacement_map.png')
+const subsoilAOTexture = textureLoader.load('./textures/subsoil/ao_map.png')
 
-const parentRockColorTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_col_1k.webp')
+
+
+
+
+// const parentRockColorTexture = textureLoader.load('./textures/parentRock/hand-drawn-color.jpg')
+// parentRockColorTexture.colorSpace = THREE.SRGBColorSpace
+// const parentRockARMTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_arm_1k.webp')
+// const parentRockNormalTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_nor_gl_1k.webp')
+// const parentRockDisplacementTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_height_1k.webp')
+// const parentRockAOTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_ao_1k.webp')
+
+
+
+const parentRockColorTexture = textureLoader.load('./textures/parentRock/hand-drawn-color.jpg')
 parentRockColorTexture.colorSpace = THREE.SRGBColorSpace
-const parentRockARMTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_arm_1k.webp')
-const parentRockNormalTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_nor_gl_1k.webp')
-const parentRockDisplacementTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_height_1k.webp')
-const parentRockAOTexture = textureLoader.load('./textures/parentRock/rocks_ground_02_ao_1k.webp')
+const parentRockARMTexture = textureLoader.load('./textures/parentRock/roughness_map.jpg')
+const parentRockNormalTexture = textureLoader.load('./textures/parentRock/normal_map.jpg')
+const parentRockAOTexture = textureLoader.load('./textures/parentRock/ao_map.jpg')
 
-const bedRockColorTexture = textureLoader.load('./textures/bedRock/broken_wall_diff_1k.webp')
+
+const bedRockColorTexture = textureLoader.load('./textures/bedRock/1.jpeg')
 bedRockColorTexture.colorSpace = THREE.SRGBColorSpace
-const bedRockARMTexture = textureLoader.load('./textures/bedRock/broken_wall_arm_1k.webp')
-const bedRockNormalTexture = textureLoader.load('./textures/bedRock/broken_wall_nor_gl_1k.webp')
-const bedRockDisplacementTexture = textureLoader.load('./textures/bedRock/broken_wall_disp_1k.webp')
-const bedRockAOTexture = textureLoader.load('./textures/bedRock/broken_wall_ao_1k.webp')
+const bedRockARMTexture = textureLoader.load('./textures/bedRock/new_roughness_map.jpg')
+const bedRockNormalTexture = textureLoader.load('./textures/bedRock/new_normal_map.jpg')
+const bedRockDisplacementTexture = textureLoader.load('./textures/bedRock/new_displacement_map.jpg')
+const bedRockAOTexture = textureLoader.load('./textures/bedRock/new_ao_map.jpg')
 
 
 // Repeat wrapping for parent rock textures
 parentRockColorTexture.wrapS = THREE.RepeatWrapping;
 parentRockColorTexture.wrapT = THREE.RepeatWrapping;
-parentRockColorTexture.repeat.set(3, 3);
+parentRockColorTexture.repeat.set(0.5, 0.5);
 
 parentRockARMTexture.wrapS = THREE.RepeatWrapping;
 parentRockARMTexture.wrapT = THREE.RepeatWrapping;
-parentRockARMTexture.repeat.set(3, 3);
+parentRockARMTexture.repeat.set(0.5, 0.5);
 
 parentRockNormalTexture.wrapS = THREE.RepeatWrapping;
 parentRockNormalTexture.wrapT = THREE.RepeatWrapping;
-parentRockNormalTexture.repeat.set(3, 3);
+parentRockNormalTexture.repeat.set(0.5, 0.5);
 
-parentRockDisplacementTexture.wrapS = THREE.RepeatWrapping;
-parentRockDisplacementTexture.wrapT = THREE.RepeatWrapping;
-parentRockDisplacementTexture.repeat.set(3, 3);
+// parentRockDisplacementTexture.wrapS = THREE.RepeatWrapping;
+// parentRockDisplacementTexture.wrapT = THREE.RepeatWrapping;
+// parentRockDisplacementTexture.repeat.set(0.5, 0.5);
 
 parentRockAOTexture.wrapS = THREE.RepeatWrapping;
 parentRockAOTexture.wrapT = THREE.RepeatWrapping;
-parentRockAOTexture.repeat.set(3, 3);
+parentRockAOTexture.repeat.set(0.5, 0.5);
+
 
 
 /** 
@@ -248,9 +282,7 @@ const humusLayer = new THREE.Mesh(
     new THREE.MeshStandardMaterial({
         transparent: true,
         map: humusLayerColorTexture,
-        aoMap: humusLayerARMTexture,
         roughnessMap: humusLayerARMTexture,
-        metalnessMap: humusLayerARMTexture,
         normalMap: humusLayerNormalTexture,
         displacementMap: humusLayerDisplacementTexture,
         displacementScale: 0.1,
@@ -267,9 +299,10 @@ const topsoil = new THREE.Mesh(
         roughnessMap: topsoilARMTexture,
         metalnessMap: topsoilARMTexture,
         normalMap: topsoilNormalTexture,
+        aoMap: topsoilAOTexture,
         displacementMap: topsoilDisplacementTexture,
-        displacementScale: 0.3,
-        displacementBias: -0.1 // Add this to push displacement inward
+        displacementScale: 0.1,
+        displacementBias: -0.045 // Add this to push displacement inward
     })
 )
 layersOfSoil.add(topsoil)
@@ -279,8 +312,7 @@ const subsoil = new THREE.Mesh(
     new THREE.BoxGeometry(3, 1.5, 3, 64, 64, 64),
     new THREE.MeshStandardMaterial({
         map: subsoilColorTexture,
-        roughnessMap: subsoilARMTexture,
-        metalnessMap: subsoilARMTexture,
+        // roughnessMap: subsoilARMTexture,
         normalMap: subsoilNormalTexture,
         displacementMap: subsoilDisplacementTexture,
         displacementScale: 0.2,
@@ -296,12 +328,11 @@ const parentRock = new THREE.Mesh(
         transparent: true,
         map: parentRockColorTexture,
         roughnessMap: parentRockARMTexture,
-        metalnessMap: parentRockARMTexture,
         aoMap: parentRockAOTexture,
         normalMap: parentRockNormalTexture,
-        displacementMap: parentRockDisplacementTexture,
-        displacementScale: 0.1,
-        displacementBias: -0.08
+        // displacementMap: parentRockDisplacementTexture,
+        // displacementScale: 0.1,
+        // displacementBias: -0.08
     })
 )
 layersOfSoil.add(parentRock)
@@ -313,10 +344,8 @@ const bedRock = new THREE.Mesh(
         transparent: true,
         map: bedRockColorTexture,
         roughnessMap: bedRockARMTexture,
-        metalnessMap: bedRockARMTexture,
         aoMap: bedRockAOTexture,
         normalMap: bedRockNormalTexture,
-        displacementMap: bedRockDisplacementTexture,
         displacementScale: 0.5,
         displacementBias: -0.45
     })

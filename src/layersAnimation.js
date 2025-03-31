@@ -109,6 +109,9 @@ export function animateHumusLayer(humusLayer, grassLayer, topsoil, subsoil, pare
     // Disable orbit controls during animation
     controls.enabled = false;
 
+    // Play whoosh sound for zoom-in
+    playWhooshSound();
+
     // Create a timeline for sequential animations
     const timeline = gsap.timeline({
         onComplete: () => {
@@ -367,6 +370,9 @@ export function animateTopsoilLayer(topsoil, grassLayer, humusLayer, subsoil, pa
     // Disable orbit controls during animation
     controls.enabled = false;
 
+    // Play whoosh sound for zoom-in
+    playWhooshSound();
+
     // Create a timeline for sequential animations
     const timeline = gsap.timeline({
         onComplete: () => {
@@ -611,6 +617,9 @@ export function animateSubsoilLayer(subsoil, grassLayer, humusLayer, topsoil, pa
 
     // Disable orbit controls during animation
     controls.enabled = false;
+
+    // Play whoosh sound for zoom-in
+    playWhooshSound();
 
     // Create a timeline for sequential animations
     const timeline = gsap.timeline({
@@ -857,6 +866,9 @@ export function animateParentRockLayer(parentRock, grassLayer, humusLayer, topso
     // Disable orbit controls during animation
     controls.enabled = false;
 
+    // Play whoosh sound for zoom-in
+    playWhooshSound();
+
     // Create a timeline for sequential animations
     const timeline = gsap.timeline({
         onComplete: () => {
@@ -1101,6 +1113,9 @@ export function animateBedRockLayer(bedRock, grassLayer, humusLayer, topsoil, su
 
     // Disable orbit controls during animation
     controls.enabled = false;
+
+    // Play whoosh sound for zoom-in
+    playWhooshSound();
 
     // Create a timeline for sequential animations
     const timeline = gsap.timeline({

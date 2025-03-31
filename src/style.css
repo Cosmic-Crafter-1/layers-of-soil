@@ -1,8 +1,8 @@
 html,
 body {
     overflow: hidden;
-    /* background: linear-gradient(135deg, #592c1c 0%, #8b4513 100%); */
-    background: linear-gradient(135deg, #e8e4ff 0%, #c3baff 100%);
+    background: linear-gradient(135deg, #f5deb3 0%, #e6c994 100%);
+    /* background: linear-gradient(135deg, #e8e4ff 0%, #c3baff 100%); */
 }
 
 .webgl {
@@ -18,7 +18,8 @@ h1 {
 }
 
 .light-mode {
-    background: linear-gradient(135deg, #e8e4ff 0%, #c3baff 100%);
+    /* background: linear-gradient(135deg, #e8e4ff 0%, #c3baff 100%); */
+    background: linear-gradient(135deg, #f5deb3 0%, #e6c994 100%);
 }
 
 .dark-mode {
