@@ -23,7 +23,7 @@ Added camera animation and narration.
 -- Noticed code is getting too big. Time to organize.'
 -- Sound wasn't working in vercel. Fixed it by importing it rather than trying all paths.
 
-2/03/12 -
+02/03/12 -
 -- Noticed that raycasting was highlighting several layers at once. Because of these reasons :
         a. Overlapping geometries: The expanded displacement maps on your geometries might be causing the actual rendered surfaces to overlap. Since you're using displacement maps with significant values, the actual visible geometry extends beyond the base shape.
         b. Imprecise ray intersection test: The raycaster is detecting multiple intersections along the ray path, not just the closest one.
@@ -37,3 +37,18 @@ There was a logical inconsistency - you were scaling closestObject (the first in
 Solution was to just remove the for loop that looped over all intersections lmao :)
 
 -- I gotta notify user to switch of reading mode for better experience.
+
+
+8-04-25 -
+1. Start with HTML, take a day for that, no worries. Re-write the entire code yourself, to better understand it - 1D.
+2. Try animating just one layer that goes from right to left, and the text coming on the right.
+3. I need to make it so that it's container by container. Like scroll and you go to next div directly....
+
+
+I got another idea, like we have a small version of the entire soil block at bottom left or bottom right (fixed). Now when you land on the page, you get that big cute all layers. But when you start scrolling, it becomes a smaller version of itself and fixes itself at the bottom as I said. Then when we scroll,the first layer being humus, it comes from the big layer when we landed to the left and info about it on the right. 
+But now when you scroll again, it goes to the small layer below. And the next layer is picked from that small layer itself, like topsoil from that small version comes out of it to the right (opposite direction again) and becomes big with text on left. And so on..
+
+And finally when you finish all layers, the small model, again, becomes the original size and users can interact freely.
+
+
+Generate accurate info based audio for topsoil, subsoil, parentrock and bedrock - 1D
